@@ -38,7 +38,7 @@ var longestDupSubstring = function(s) {
  */
  var longestDupSubstring = function(s) {
     let lDS = "";
-    let sub = ""
+    let sub = "";
     for (let i = 0; i < s.length-1; i++){
         curI = i;
         sub += s[i];
@@ -55,8 +55,6 @@ var longestDupSubstring = function(s) {
         }
         sub = "";
         i = curI;
-        
-        
     }
     return lDS;
 }; // also works, 65/66 test cases before out of time
