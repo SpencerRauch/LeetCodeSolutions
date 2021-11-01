@@ -1,45 +1,36 @@
-/**
- * // Definition for a Node.
- * function Node(val,prev,next,child) {
- *    this.val = val;
- *    this.prev = prev;
- *    this.next = next;
- *    this.child = child;
- * };
- */
-
-/**
- * @param {Node} head
- * @return {Node}
- */
-var flatten = function (head) {
-    let runner = head;
-    while (runner.next != null) {
-
-        runner = runner.next;
-    }
-
-
-
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node prev;
+    public Node next;
+    public Node child;
 };
+*/
 
-var flatRecurse = (node) => {
-    let childrunner = node;
-    if (runner.child != null) {
-        while (childrunner.next != null) {
-            childrunner = childrunner.next;
-            if ()
+class Solution {
+    public Node flatten(Node head) {
+        Node runner = head;
+        while (runner != null){
+            if (runner.child != null){
+                Node childRunner = runner.child;
+                while (childRunner.next != null){
+                    if (childRunner.child != null){
+                        flatten(childRunner);
+                    }
+                    childRunner = childRunner.next;
+                }
+            if (runner.next != null) runner.next.prev = childRunner;
+            childRunner.next = runner.next;
+            runner.child.prev = runner;
+            runner.next = runner.child;
+            runner.child = null;
                 
             }
+            runner = runner.next;
+        }
+        return head;
+        
     }
-    runner.next.prev = childrunner;
-    childrunner.next = runner.next;
-    runner.child.prev = runner;
-    runner.next = runner.child;
-    runner.child = null;
-
-
 }
-
-
 //https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/
