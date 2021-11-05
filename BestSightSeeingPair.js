@@ -14,5 +14,15 @@
     return max
 };
 
+var maxScoreSightseeingPair2 = function(values) {
+    let max = values[0];
+    let score = 0;
+    for (let i = 1; i < values.length; i++){
+        score = Math.max(score, max + values[i] - i)
+        max = Math.max(max, values[i]+i)
+    }
+    return score;
+}
 console.log(maxScoreSightseeingPair([8,1,5,2,6]))
-https://leetcode.com/problems/best-sightseeing-pair/
+console.log(maxScoreSightseeingPair2([8,1,5,2,6]))
+// https://leetcode.com/problems/best-sightseeing-pair/
