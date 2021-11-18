@@ -4,27 +4,29 @@
  */
  var findDisappearedNumbers = function (nums) {
     debugger;
-    let sorted = nums.sort((a, b) => a - b);
+    nums.sort((a, b) => a - b);
     let returnArr = [];
-    if (sorted[0] != 1){
+    //finds missing numbers at the begining
+    if (nums[0] != 1){
         x = 1;
-        while (x < sorted[0]){
+        while (x < nums[0]){
             returnArr.push(x) 
             x++;
             
         } 
     }
+    // finds missing numbers in the middle
     for (let i = 1; i < nums.length; i++) {
-        if (sorted[i - 1] < i) {
-            let x = sorted[i - 1] + 1
-            while (x < sorted[i]) {
+        if (nums[i - 1] < i) {
+            let x = nums[i - 1] + 1
+            while (x < nums[i]) {
                 returnArr.push(x)
                 x++;
             }
 
-        } else if (sorted[i] > i+1){
-            let x = sorted[i-1] + 1
-            while (x < sorted[i]) {
+        } else if (nums[i] > i+1){
+            let x = nums[i-1] + 1
+            while (x < nums[i]) {
                 returnArr.push(x)
                 x++;
             }
@@ -32,9 +34,10 @@
         }
 
     } 
-    if (sorted[sorted.length-1] != sorted.length){
-        let x = sorted[sorted.length-1] +1;
-        while (x <= sorted.length){
+    // finds missing numbers at the end
+    if (nums[nums.length-1] != nums.length){
+        let x = nums[nums.length-1] +1;
+        while (x <= nums.length){
             returnArr.push(x)
             x++
         }
