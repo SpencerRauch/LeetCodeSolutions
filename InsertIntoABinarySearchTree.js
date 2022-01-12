@@ -13,17 +13,17 @@
  */
 var insertIntoBST = function(root, val) {
     if (root == null){
-        return new TreeNode(val)
+        return new TreeNode(val) // If tree is empty, make a new node and return it
     }
     
-    if (val > root.val){
-        if (root.right == null){
-            root.right = new TreeNode(val)           
-        } else{
+    if (val > root.val){  // if value is larger than root value, go right
+        if (root.right == null){ // nothing to the right? 
+            root.right = new TreeNode(val)  // make our new node here         
+        } else{ // otherwise, traverse right and make recursive call
             insertIntoBST(root.right, val)
-            return root
+            return root // always returning root in first call so we don't lose root
         }
-    }else{
+    }else{ // if value is less than root value, go left
          if (root.left == null){
             root.left = new TreeNode(val)           
         } else{
