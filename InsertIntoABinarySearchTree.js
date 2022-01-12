@@ -21,14 +21,12 @@ var insertIntoBST = function(root, val) {
             root.right = new TreeNode(val)  // make our new node here         
         } else{ // otherwise, traverse right and make recursive call
             insertIntoBST(root.right, val)
-            return root // always returning root in first call so we don't lose root
         }
     }else{ // if value is less than root value, go left
-         if (root.left == null){
+        if (root.left == null){
             root.left = new TreeNode(val)           
         } else{
             insertIntoBST(root.left, val)
-            return root
         }
         
     }
