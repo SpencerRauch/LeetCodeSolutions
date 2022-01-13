@@ -4,7 +4,7 @@
  */
  var findMinArrowShots = function(points) {
     let arrows = 0;
-    let sorted = points.sort((a,b) => (a[0]-b[0]))
+    points.sort((a,b) => (a[0]-b[0]))
     let i = 0;
     while (i < points.length){
         let left = points[i][0]
