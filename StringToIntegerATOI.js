@@ -13,9 +13,9 @@
     if (isNaN(s[idx])){ //look for signing after white space
         if (s[idx] == "-"){
             neg = true
-        } else if (s[idx] == "+"){
-            neg = false 
-        } else return 0; // if we've got a NaN after the whitespace that's not a plus or minus, we're done
+        } else if (s[idx] != "+"){
+            return 0; // if we've got a NaN after the whitespace that's not a plus or minus, we're done
+        }
         idx++
     }
     if (isNaN(s[idx]) || s[idx] == " ") return 0; // "if no digits were read, return 0"
