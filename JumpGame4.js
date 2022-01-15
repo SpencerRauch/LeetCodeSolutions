@@ -51,7 +51,7 @@
             }
             
             if (map[value]){ //if value is in our map, we need to check jumps to all it's indices
-                for (let idx of map[value]){
+                for (let idx of map[value]){ //iterate through array containing indices of our current value
                     if (arr[idx]){ //checks if index has already been visited
                         nextToCheck.push(idx) // if not, put it in our list to check next
                     }
