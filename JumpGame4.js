@@ -9,7 +9,7 @@
     }
     if ( n == 2 || arr[0] == arr[n-1]){
         return 1
-    } // if first and last are the same we can just jump to last
+    } // if first and last are the same or only two indices we can just jump to last 
     
     let map = {}
     
