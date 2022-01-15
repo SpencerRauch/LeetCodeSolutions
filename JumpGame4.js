@@ -13,13 +13,18 @@
     
     let map = {}
     
-    for ( let i = 0; i < n; i++){ //build a hash map containing an array with every index a value appears at
+    for ( let i = 0; i < n; i++){ //build a hash map where keys are numbers from the array and contain an array with every index a number appears at
         if (map[arr[i]]){
             map[arr[i]].push(i)
         } else {
             map[arr[i]] = [i]
         }
     }
+    /*
+    example:
+    [1,2,3,1,2,3,5] => { 1: [0,3], 2: [1,4], 3: [2,5], 5:[6]}
+    
+    */
     let indicesToCheck = [0] // initialize our indices to check to the first index
     let jumps = 0
     
