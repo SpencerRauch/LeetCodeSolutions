@@ -5,7 +5,7 @@ const resultOne = "5:0hdas2523apdsa";
 
 
 const two = [-1, 9, 9, 9, 1, 9];
-const resultTwo = "01:0hdas2523apdsa";
+const resultTwo = "63:0hdas2523apdsa";
 
 const three = [-5, -9, 0, -6, 1, 0];
 const resultThree = "4-:0hdas2523apdsa";
