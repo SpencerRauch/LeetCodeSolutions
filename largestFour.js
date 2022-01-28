@@ -19,7 +19,6 @@ function largestFour(arr) {
     
     if (n > 4){
         let sorted = arr.sort((a,b) => (b-a))
-        console.log(sorted)
         for (let i = 0; i < 4; i++){
             sum += sorted[i]
         }
