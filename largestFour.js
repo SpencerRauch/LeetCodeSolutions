@@ -9,7 +9,7 @@ const resultTwo = "63:0hdas2523apdsa";
 
 const three = [-5, -9, 0, -6, 1, 0];
 const resultThree = "4-:0hdas2523apdsa";
-//returns the sum of the largest 4 values, appended to key string, which is then reversed
+//returns the sum of the largest 4 values (or all values if  <= 4 present), appended to key string, which is then reversed
 //given to a fellow TA as an interview question
 
 function largestFour(arr) {
