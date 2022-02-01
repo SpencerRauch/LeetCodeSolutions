@@ -19,7 +19,7 @@ var maxProfit2 = (prices) => {
     let lowestBuy = prices[0];
     let maxProfit = 0;
 
-    for (let i = 0; i < prices.length; i++){
+    for (let i = 1; i < prices.length; i++){
         let thisPrice = prices[i];
 
         maxProfit = Math.max(maxProfit, thisPrice - lowestBuy);
