@@ -19,10 +19,12 @@
     let left = 0;
     let right = 0;
     while (right < s.length){
+        debugger;
         if (keyMap[s[right]] > 0){
             count--
+            keyMap[s[right]]--
         } 
-        keyMap[s[right]]--
+        
         
         right++;
         
@@ -41,3 +43,5 @@
     return returnArr
 };
 //https://leetcode.com/problems/find-all-anagrams-in-a-string/submissions/
+
+console.log(findAnagrams("baba","ab"))
