@@ -3,7 +3,7 @@
  * @return {number}
  */
  var findMaxLength = function(nums) {
-    let counts = {0:-1} //store current count as key, index as value
+    let counts = {0:-1} //store current count as key, index as value {count:index}
     let count = 0
     let i = 0
     let maxLength = 0
