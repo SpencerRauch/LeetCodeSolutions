@@ -12,12 +12,9 @@
  var mergeKLists = function(lists) {
     let allNodes = []
     for (let list of lists){
-        if (list){
+        while(list){
             allNodes.push(list)
-            while(list.next){
-                list = list.next
-                allNodes.push(list)
-            }
+            list = list.next
         }
     }
     allNodes.sort((a,b) => (a.val - b.val))
