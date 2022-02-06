@@ -6,8 +6,8 @@
     let prev = nums[0];
     let count = 1;
     let swaps = 0
-    const swapToEnd = function(arr, index){
-        while(index < arr.length -1){
+    const swapToEnd = function(arr, index, offset){
+        while(index < arr.length -1 - offset){
             [arr[index], arr[index+1]] = [arr[index+1], arr[index]]
             index++
         }
@@ -21,7 +21,7 @@
             count = 1;
         }
         if (count > 2){
-            swapToEnd(nums, i)
+            swapToEnd(nums, i, swaps)
             swaps++
             i-- 
         }
