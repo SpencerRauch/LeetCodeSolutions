@@ -12,8 +12,8 @@
             index++
         }
     }
-    debugger;
     for (let i=1;i<nums.length;i++){
+        if (i > nums.length - 1- swaps) break;  //stops us from processing already swapped data
         if (nums[i] == prev){
             count++
         } else {
@@ -21,11 +21,9 @@
             count = 1;
         }
         if (count > 2){
-            if (i > nums.length - 1- swaps) break; //stops us from swapping already swapped data
-            swaps++
             swapToEnd(nums, i)
-            i--
-            
+            swaps++
+            i-- 
         }
         
     }
