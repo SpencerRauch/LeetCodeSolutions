@@ -21,7 +21,7 @@
             count = 1;
         }
         if (count > 2){
-            if (i > nums.length - 1- swaps) continue; //stops us from swapping already swapped data
+            if (i > nums.length - 1- swaps) break; //stops us from swapping already swapped data
             swaps++
             swapToEnd(nums, i)
             i--
