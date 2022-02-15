@@ -22,4 +22,8 @@ var singleNumber = function (nums) {
     return lonelyNumber
 };
 
+var singleNumber3 = function(nums) {
+    return nums.reduce((a,b) => (a^b))
+};
+
 // https://leetcode.com/problems/single-number
