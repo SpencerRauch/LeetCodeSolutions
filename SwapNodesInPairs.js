@@ -44,8 +44,8 @@
  * @return {ListNode}
  */
  var swapPairs = function(head) {
-    if (!head || !head.next) return head
-    let preservedHead = head.next;
+    if (!head || !head.next) return head // empty list or just one node, no swapping, return it
+    let preservedHead = head.next; //hold second element, will be our head after first swap
     let previous = head;
     let next = head.next;
     head.next = next.next
