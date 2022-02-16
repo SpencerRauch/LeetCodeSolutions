@@ -12,21 +12,21 @@
  var swapPairsUseArr = function(head) {         
     if (!head || !head.next) return head
     let arr = []
-    let preservedHead = head.next
-    while(head){
+    let preservedHead = head.next //the second node will become our head
+    while(head){              //push all nodes into an array
         arr.push(head)
         head = head.next
     }
 
-    for (let i = 0; i < arr.length-1; i+=2){
-        [arr[i], arr[i+1]] = [arr[i+1], arr[i]]
+    for (let i = 0; i < arr.length-1; i+=2){       //stepping by two, swap this value with the next 
+        [arr[i], arr[i+1]] = [arr[i+1], arr[i]]  // stop one before end of list (don't try to swap the last if there's an odd amount of nodes)
     }
 
     for (let i = 0; i < arr.length -1; i++){
-        arr[i].next = arr[i+1]
+        arr[i].next = arr[i+1] // nodes are now in correct order in our array, so iterate and repoint
     }
-    arr[arr.length-1].next = null
-    return preservedHead
+    arr[arr.length-1].next = null //last node needs to point to null
+    return preservedHead //return our head
     
 };
 
