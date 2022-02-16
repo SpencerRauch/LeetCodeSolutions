@@ -25,7 +25,7 @@
     for (let i = 0; i < arr.length -1; i++){
         arr[i].next = arr[i+1] // nodes are now in correct order in our array, so iterate and repoint
     }
-    arr[arr.length-1].next = null //last node needs to point to null
+    arr[arr.length-1].next = null //ensure last node points to null to avoid node loop
     return preservedHead //return our head
     
 };
