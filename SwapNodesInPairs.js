@@ -52,11 +52,15 @@
     next.next = head
     head = head.next
     while(head && head.next){
+        //init this loop
         next = head.next
+
+        //make swap
         head.next = next.next
         previous.next = next
         next.next = head
         
+        //prep for next loop
         previous = head
         head = head.next
     }
