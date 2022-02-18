@@ -68,7 +68,7 @@
         minValStack.pop()
     }
     numStr = minValStack.join("")
-    for (var i = 0; i < numStr.length; i++){
+    for (var i = 0; i < numStr.length-1; i++){
         if (numStr[i] != '0'){
             break
         }
