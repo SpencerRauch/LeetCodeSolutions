@@ -3,7 +3,6 @@ var compareVersion = function(version1, version2) {
     version2 = version2.split('.');
     
     let index = 0;
-    
     while (index < version1.length || index < version2.length) {
         const num1 = version1[index] ? parseInt(version1[index]) : 0;
         const num2 = version2[index] ? parseInt(version2[index]) : 0;
@@ -19,3 +18,5 @@ var compareVersion = function(version1, version2) {
     
     return 0;
 };
+
+// https://leetcode.com/problems/compare-version-numbers
