@@ -48,30 +48,35 @@ const songDurantions2 = [50, 30, 20, 80, 10, 85, 5];
 const expected2 = [5,6];
 
 const rideDuration3 = 110;
-const songDurantions3 = [10, 30, 50, 50, 20];
+const songDurantions3 = [19, 39, 59, 59, 29];
 const expected3 = [1,2];
+
+const rideDuration4 = 130;
+const songDurantions4 = [10,50,50,50,50,50,50, 90];
+const expected4 = [0,1];
 
 function findSongs(rideDuration, songDurations) {
     let target = rideDuration - 30;
-    let selections = {};
+    let selections = {}; // object to hold array of indices as values, longer song duration of the pair as key
     let longestDurationInAPair = 0;
     for (let i = 0; i < songDurations.length; i++){
         for (let j = i + 1; j < songDurations.length; j++){
-            if (songDurations[i] + songDurations[j] == target){
-                if (songDurations[i] > songDurations[j] && !selections[songDurations[i]]){
-                    selections[songDurations[i]] = [i,j];
-                } else if (!selections[songDurations[j]]){
+            if (songDurations[i] + songDurations[j] == target){ //duration match of two songs
+                if (songDurations[i] > songDurations[j] && !selections[songDurations[i]]){  // if the song at i is longer and doesn't  exist as a key in our object
+                    //by only holding the first pair with this longest duration, we capture the lowest index version only
+                    selections[songDurations[i]] = [i,j]; // store the indices of the time match as a value to the longer duration as the key
+                    longestDurationInAPair = songDurations[i] > longestDurationInAPair ? songDurations[i] : longestDurationInAPair //update the longest duration in a pair
+                } else if (!selections[songDurations[j]]){ // handles if j is the longer song or songs are even
                     selections[songDurations[j]] = [i,j];
+                    longestDurationInAPair = songDurations[j] > longestDurationInAPair ? songDurations[j] : longestDurationInAPair
                 }
 
             }
         }
     }
-    for (key in selections){
-        longestDurationInAPair = key > longestDurationInAPair ? key : longestDurationInAPair;
-    }
-    return selections[longestDurationInAPair];
+
+    return selections[longestDurationInAPair] ? selections[longestDurationInAPair] : [-1,-1];
 }
 
-console.log(findSongs(rideDuration1,songDurantions1))
+console.log(findSongs(rideDuration3,songDurantions3))
 
