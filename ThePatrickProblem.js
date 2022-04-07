@@ -40,34 +40,38 @@ generate_operators(operators)
 function find_answer(numbers, operators) {
     for (let number of numbers) {
         for (let operator of operators) {
-            let totals = [parseInt(number[0])]
+            let totals = [{'total':parseInt(number[0]), 'steps': ""}]
             let i = 1;
             for (let char of operator) {
                 let newTotals = []
                 switch (char) {
                     case '/':
                         for (let total of totals) {
-                            let temp = total
-                            total /= parseInt(number[i])
-                            newTotals.push(parseInt(number[i]) / temp)
+                            let temp = total.total
+                            newTotals.push({'total':parseInt(number[i])/temp, 'steps': total.steps + `divide ${number[i]} by ${temp} \n`})
+                            total.steps += `divide ${temp} by ${number[i]} \n`
+                            total.total /= parseInt(number[i])
                         }
                         break
                     case '+':
                         for (let total of totals) {
-                            total += parseInt(number[i])
+                            total.steps += `add ${total.total} to ${number[i]} \n`
+                            total.total += parseInt(number[i])
                         }
                         break
                     case '-':
                         for (let total of totals) {
-                            let temp = total
-                            total -= parseInt(number[i])
-                            newTotals.push(parseInt(number[i]) - temp)
+                            let temp = total.total
+                            newTotals.push({'total':parseInt(number[i])-temp, 'steps': total.steps + `subtract ${temp} from ${number[i]} \n`})
+                            total.steps += `subtract ${number[i]} from ${temp}} \n`
+                            total.total -= parseInt(number[i])
                         }
                         break
 
                     case '*':
                         for (let total of totals) {
-                            total *= parseInt(number[i])
+                            total.steps *= `multiply ${total.total} by ${number[i]} \n`
+                            total.total *= parseInt(number[i])
                         }
                         break
                 }
@@ -75,7 +79,7 @@ function find_answer(numbers, operators) {
                 i++
             }
             for (let total of totals) {
-                if (total == 24) return (`${operator}, ${number}`)
+                if (total.total == 24) return (`${operator}, ${number} \n` + total.steps)
             }
 
         }
