@@ -21,14 +21,14 @@ var numbers = generateAnagrams("1346");
 
 var operators = []
 
-function generate_operators(arr, partial=""){
-    let operators = ['/','+','-','*']
+function generate_operators(arr, partial = "") {
+    let operators = ['/', '+', '-', '*']
     if (partial.length == 3) {
         arr.push(partial)
         return
     }
 
-    for (let operator of operators){
+    for (let operator of operators) {
         generate_operators(arr, partial + operator)
     }
     return arr
@@ -37,38 +37,56 @@ function generate_operators(arr, partial=""){
 
 generate_operators(operators)
 
-function find_answer(numbers, operators){
-    for (let number of numbers){
-        for (let operator of operators){
-            let total = parseInt(number[0])
+function find_answer(numbers, operators) {
+    for (let number of numbers) {
+        for (let operator of operators) {
+            let totals = [parseInt(number[0])]
             let i = 1;
-            for (let char of operator){
-                switch(char){
+            for (let char of operator) {
+                let newTotals = []
+                switch (char) {
                     case '/':
-                        total /= parseInt(number[i])
+                        for (let total of totals) {
+                            let temp = total
+                            total /= parseInt(number[i])
+                            newTotals.push(parseInt(number[i]) / temp)
+                        }
                         break
                     case '+':
-                        total += parseInt(number[i]) 
-                        break
-                    case '*':
-                        total *= parseInt(number[i]) 
+                        for (let total of totals) {
+                            total += parseInt(number[i])
+                        }
                         break
                     case '-':
-                        total -= parseInt(number[i]) 
+                        for (let total of totals) {
+                            let temp = total
+                            total -= parseInt(number[i])
+                            newTotals.push(parseInt(number[i]) - temp)
+                        }
+                        break
+
+                    case '*':
+                        for (let total of totals) {
+                            total *= parseInt(number[i])
+                        }
                         break
                 }
+                totals = [...totals, ...newTotals]
                 i++
             }
+            for (let total of totals) {
+                if (total == 24) return (`${operator}, ${number}`)
+            }
 
-            if (total == 24) return (operator, number)
-            if (total == 7) return ("yeah seven")
         }
     }
     return "it... it's not here"
 }
 
-console.log(find_answer(numbers,operators))
+console.log(find_answer(numbers, operators))
 
 
 /// ITS NOT POSSIBLE PATRICK // Okay it is
 // (6/(1-(3/4)) = 24) Algo doesn't find it because it only checks expressions that can be reduced to simple left to right operations
+
+//updated to add search paths for subtraction and division
