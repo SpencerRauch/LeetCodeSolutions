@@ -89,4 +89,4 @@ console.log(find_answer(numbers, operators))
 /// ITS NOT POSSIBLE PATRICK // Okay it is
 // (6/(1-(3/4)) = 24) Algo doesn't find it because it only checks expressions that can be reduced to simple left to right operations
 
-//updated to add search paths for subtraction and division and prove myself wrong 
+//updated to add search paths for subtraction and division and prove myself wrong. algo now finds solution but I'd like to add steps print out
