@@ -61,6 +61,7 @@ function find_answer(numbers, operators){
             }
 
             if (total == 24) return (operator, number)
+            if (total == 7) return ("yeah seven")
         }
     }
     return "it... it's not here"
@@ -69,4 +70,5 @@ function find_answer(numbers, operators){
 console.log(find_answer(numbers,operators))
 
 
-/// ITS NOT POSSIBLE PATRICK
+/// ITS NOT POSSIBLE PATRICK // Okay it is
+// (6/(1-(3/4)) = 24) Algo doesn't find it because it only checks expressions that can be reduced to simple left to right operations
