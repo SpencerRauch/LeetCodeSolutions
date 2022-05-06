@@ -93,10 +93,12 @@ const expectedSort = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  * @returns {Array<number>} A New sorted array.
  */
 function mergeSort(nums) {
-    if (nums.length == 1){ //base case: an array of length 1 is sorted implicitly
+    if (nums.length == 1){ //base case: an array of length 1 is sorted implicitly and can be returned to be merged 
         return nums
     }
     let mid = Math.floor(nums.length/2) //find mid point
+
+    //recursive calls
     let left = mergeSort(nums.slice(0,mid)) //slice everything before mid point for left half, recursively sort left half
     let right = mergeSort(nums.slice(mid)) // and now same for the right
 
