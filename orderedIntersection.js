@@ -41,7 +41,7 @@ function orderedIntersection(sortedA, sortedB) {
 
         if (valA == valB){ //if values are the same, we've found an intersect
             if (intersect[intersect.length-1] != valA){ //check for dupe
-                intersect.push(valA) //push valA to intersect if not a dupe
+                intersect.push(valA) //push valA to intersect array if not a dupe
             }
             indexA++ //whether a dupe or not, intersect has been checked, move both indices
             indexB++
