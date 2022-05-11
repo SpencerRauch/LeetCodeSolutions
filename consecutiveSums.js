@@ -22,7 +22,7 @@
 // create new arrays
 // if no matches, return empty array
 
-function findConsecutiveSums(arr, k) { //first pass, lots of built ins
+function findConsecutiveSums(arr, k) { //my first pass, lots of built ins
     let left = 0; //initialize left and right indices for slicing
     let right = 1;
     let returnArr = [] // arr to return
