@@ -60,8 +60,6 @@ function findConsecutiveSums2(arr, k) {
             }
             sum += arr[j] // add next element if we haven't reached target or passed it
         }
-
-
     }
     return returnArr
 }
