@@ -27,7 +27,7 @@ function findConsecutiveSums(arr, k) { //first pass, lots of built ins
     let right = 1;
     let returnArr = [] // arr to return
     while (right < arr.length + 1) { // while right is less than one more than length
-        // plus one because we will be slicing, and slice is exclusive of second index
+        // plus one because we will be slicing, and slice is exclusive of second index provided
         let slice = arr.slice(left, right) //get the portion of the array we're looking at
         let sum = slice.reduce((a, b) => a + b) //sum its parts using reduce
         if (sum == k) { //if we found our target sum
