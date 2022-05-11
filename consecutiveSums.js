@@ -51,7 +51,7 @@ function findConsecutiveSums2(arr, k) {
         let sum = arr[i] //initialize a sum starting at this i position
 
         //inner loop 
-        for (let j = i + 1; j < arr.length + 1; j++) { // go throw the rest off the array
+        for (let j = i + 1; j < arr.length + 1; j++) { // go through the rest off the array
             if (sum > k) { //if sum has passed k, we can stop looking / adding elements and move up i
                 break //remove this check if inputs include negative numbers
             }
