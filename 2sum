@@ -29,7 +29,7 @@
  
 function twoSums(arr, target) {
     let seen = {} //hash map object will allow O(1) look up time of already seen values. 
-    // we will store KVPs with the keys being the value from the array, and the value being its index 
+    // we will store KVPs with the key being the value from the array, and the value being its index 
     
     for (let i = 0; i < arr.length; i++){ //loop through the array
         let currentValue = arr[i]; // initialize current value to consider
