@@ -51,3 +51,4 @@ function diagonalDifference(sqrMatrix) {
 }
 
 console.log(diagonalDifference(squareMatrix2))
+
