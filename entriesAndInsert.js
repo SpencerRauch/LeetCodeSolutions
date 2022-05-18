@@ -70,31 +70,6 @@ const expectedB =
 // Explanation: no quotes around the int or the bool, technically in SQL the bool would become a 0 or 1, but don't worry about that here.
 
 function insert(tableName, columnValuePairs) {
-  let string = `INSERT into ${tableName} (` //initialize string with everything we can assume will be in it
-  let keys = Object.keys(columnValuePairs) // grab an array of keys and an array of values from our object
-  let vals = Object.values(columnValuePairs)
-
-  for (let i = 0; i < keys.length; i++) { //loop over keys
-    string += keys[i] // add each key to the string
-    if (i != keys.length - 1) { //if we're not on the last key, add a comma and a space
-      string += ", "
-    } else string += ") VALUES (" // if we ARE on the last key, end the key section and being values
-  }
-
-  for (let i = 0; i < vals.length; i++) { // looping over values
-    if (typeof vals[i] !== "string") { //if type isn't string
-      string += vals[i] //directly add value
-    } else { //if it IS a string, we want our single quotes around value
-      string += `'${vals[i]}'`
-    }
-    if (i != vals.length - 1) { // if we're not at the end,
-      string += ", " // separate values with a comma and space
-    } else string += ");" //if we are at the end, finish string
-  }
-  return string
-}
-
-function insert2(tableName, columnValuePairs) {
   let entries = Object.entries(columnValuePairs)
 
   let string = `INSERT into ${tableName} (`
