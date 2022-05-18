@@ -51,7 +51,7 @@ function findByIdAndUpdate(id, updatedVals, collection) {
             break; // break, no need to search further
         }
     }
-    
+
     if (found){ // if we have a match
         let updating = collection[index] //our match!
         for (let key in updatedVals){ //iterate through updatedVals obj
@@ -61,7 +61,6 @@ function findByIdAndUpdate(id, updatedVals, collection) {
         }
     }
     
-
     return found ? collection[index] : null; // did we find a match? Return the updated match if so. If not, return null.
 }
 
