@@ -34,7 +34,7 @@ function rehash(str) {
         if (isNaN(str[i + 1])) { // if the NEXT item isNaN (a letter, or undefined at the end)
             if (hashmap.hasOwnProperty(curLetter)) { //check our hashmap for our current letter
                 hashmap[curLetter] += +curVal //update it if it exists
-            } else {
+            } else { // ( +curVal handles type conversion to number)
                 hashmap[curLetter] = +curVal //create it if it does not
                 allLetters.push(curLetter) //if it's new, add the letter to our array of letters
             }
