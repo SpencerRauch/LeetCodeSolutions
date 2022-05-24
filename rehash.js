@@ -25,23 +25,28 @@ function rehash(str) {
     let curVal = "" //we will need to concat to build this as we iterate
     let output = "" // string to return at the end
 
-    for (let i = 1; i < str.length; i++) {
+    for (let i = 1; i < str.length; i++) { //main loop through the string
+
+        /* Handle current char */
         if (isNaN(str[i])) { // when we find a letter
             curLetter = str[i] //reset current letter
-        } else { //otherwise found a number, keep building number string
+        } else { //otherwise found a number, keep building value string
             curVal += str[i]
         }
-        if (isNaN(str[i + 1])) { // if the NEXT item isNaN (a letter, or undefined at the end)
+
+        /* Hashmap Logic */
+        if (isNaN(str[i + 1])) { //triggers if the NEXT item isNaN (a letter, or undefined at the end)
+            // i.e, we have all the info for a letter - value pair
             if (hashmap.hasOwnProperty(curLetter)) { //check our hashmap for our current letter
-                hashmap[curLetter] += +curVal //update it if it exists
+                hashmap[curLetter] += +curVal //update it if it exists by adding current value
             } else { // ( +curVal handles type conversion to number)
-                hashmap[curLetter] = +curVal //create it if it does not
-                allLetters.push(curLetter) //if it's new, add the letter to our array of letters
+                hashmap[curLetter] = +curVal //create it if it does not exist
+                allLetters.push(curLetter) //since it's new, add the letter to our array of letters
             }
             curVal = "" //reset current value string
-
         }
     }
+
     allLetters.sort() // sort all letters alphabetically
 
     for (let letter of allLetters) { //looping through our sorted letters
@@ -54,3 +59,4 @@ function rehash(str) {
 rehash(str1);
 console.log(rehash(str1) === expected1, "<-- should be \"true\"");
 console.log(rehash(str2))
+
