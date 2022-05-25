@@ -54,41 +54,25 @@ const expected4 = false;
 // Explanation: S becomes "c" while T becomes "b".
 
 function backspaceStringCompare(S, T) {
-    let sString = "" // will hold our parsed S
-    let tString = "" // will hold our parsed T
+    return parseBackSpace(S) == parseBackSpace(T) // return simple comparison call to our helper function
+ }
+
+function parseBackSpace(string){ //helper function -- Where the logic lives!
     let skip = 0 // count of how many characters to skip
-    
-    for (let i = S.length-1; i >= 0; i--){ //iterate BACKWARDS through string
-        if (S[i] == "#"){ // if current letter is a backspace, increase number of letters to skip
+    let parsed = ""
+    for (let i = string.length-1; i >= 0; i--){ //iterate BACKWARDS through string
+        if (string[i] == "#"){ // if current letter is a backspace, increase number of letters to skip
             skip++
         } else { //if current letter is NOT a backspace
             if (skip == 0){ //if we don't need to skip any letters
-                sString = S[i] + sString //add current letter to parsed string (in reverse order)
+                parsed = string[i] + parsed //add current letter to parsed string (in reverse order)
             } else if(skip > 0){ //if we need skip any, 
                 skip-- //decrement skip and do nothing else
             }
         }
     }
-
-    skip = 0 //reset skip, in case of S having more backspaces than letters
-
-    for (let i = T.length-1; i >= 0; i--){ //same as above but for T
-        if (T[i] == "#"){
-            skip++
-        } else {
-            if (skip == 0){
-                tString = T[i] + tString
-            } else if(skip > 0){
-                skip-- 
-            }
-        }
-    }
-
-
-    return sString == tString // return simple comparison
-
- }
-
+    return parsed
+}
 console.log(backspaceStringCompare(S1, T1))
 console.log(backspaceStringCompare(S2, T2))
 console.log(backspaceStringCompare(S3, T3))
