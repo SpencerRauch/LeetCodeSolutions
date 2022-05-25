@@ -66,7 +66,7 @@ function parseBackSpace(string){ //helper function -- Where the logic lives!
         } else { //if current letter is NOT a backspace
             if (skip == 0){ //if we don't need to skip any letters
                 parsed = string[i] + parsed //add current letter to parsed string (in reverse order)
-            } else if(skip > 0){ //if we need skip any, 
+            } else if(skip > 0){ //if we need to skip any, 
                 skip-- //decrement skip and do nothing else
             }
         }
