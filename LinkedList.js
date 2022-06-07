@@ -56,7 +56,12 @@ class List
 	/* but also set the head to be the next node */
 	PopFront()
 	{
-        if (this.head !== undefined) this.head = this.head.next
+        node = this.head
+        if (this.head !== undefined){
+            this.head = this.head.next
+        } 
+        return node;
+            
 	}
 
 	/* Calculate and return the average of all the node values in the list. */
