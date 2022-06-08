@@ -78,6 +78,50 @@ class List
         }
         return (sum / count);
 	}
+    Contains(value){
+        for(let node=this.head;node;node=node.next){
+            if(node.value==value){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    ContainsRecursive(node,value){
+        if(node==undefined){
+            return false;
+        }
+        if(node.value==value){
+            return true;
+        }
+        return this.ContainsRecursive(node.next,value);      
+    }
+
+    PopBack()
+    {
+        let runner = this.head;
+        if (runner == undefined) return undefined;
+        if (runner.next == undefined) return this.PopFront();
+        while(runner.next.next){
+            runner = runner.next
+        }
+        let node = runner.next;
+        runner.next = undefined;
+        return node;
+    }
+    MaxRecursive(node){
+        if(node==undefined){
+            return undefined;
+        }
+        if(node.next==undefined){
+            return node.value;
+        }
+        let max = this.MaxRecursive(node.next);
+        if(node.value>max){
+            return node.value;
+        }
+        return max;
+    }
 
     Iterate(fn)
     {
