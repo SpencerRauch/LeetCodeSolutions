@@ -122,6 +122,71 @@ class List
         }
         return max;
     }
+    /* Return the second to last node's value in the list */
+	SecondToLast()
+	{
+		let runner = this.head;
+        if (runner == undefined) return undefined;
+        if (runner.next == undefined) return undefined; //Maybe return this.head.value?
+
+        while(runner.next.next){
+            runner = runner.next
+        }
+        return runner.value;
+	}
+
+	/* Remove a node whose value matches the given value */
+	/* ( You will need to fix .next pointers too! ) */
+	RemoveValue(value)
+	{
+		let runner = this.head;
+        if (runner == undefined) return undefined;
+        if (runner.value == value) return this.PopFront();
+        while(runner.next){
+            if (runner.next.value == value){
+                runner.next = runner.next.next;
+                return;
+            }
+            runner = runner.next;
+        }
+        return undefined;
+	}
+
+	/* Inserts a new node before a node whose value is the search_value. */
+	/* Example: */
+	/*
+		Before:
+		10
+		30
+		40
+		Prepend(20,30)
+		After:
+		10
+		20
+		30
+		40
+	*/
+	Prepend(new_value,search_value)
+	{
+		let runner = this.head;
+        if (runner == undefined) return undefined;
+        if (runner.value == search_value) {
+            this.PushFront(new_value);
+            return;
+        }
+        while(runner.next){
+            if (runner.next.value == search_value){
+                let node = new Node(new_value);
+                node.next = runner.next;
+                runner.next = node;
+                return;
+            }
+            runner = runner.next;
+        }
+        return undefined;
+	}
+
+    
 
     Iterate(fn)
     {
@@ -129,39 +194,25 @@ class List
     }
 };
 
-let test_data1=123;
-let test_data2=234;
-let test_data3=345;
-let test_data4=[111,222,333,444,555];
-
 /* Create our list */
 let list=new List();
-console.log(list.IsEmpty());
-/* Insert nodes into the list: */
-list.PushBack(test_data1);
-list.PushBack(test_data2);
-list.PushBack(test_data3);
-/* Insert array of nodes into the list: */
-list.PushBackN(test_data4);
-/* Iterate our list, so we can see our node values */
-list.PushFront(78)
-list.PopFront()
+
+/* ( Use your solution from day 1 for this to work! ) */
+/* Remember, it just shoves all of these into our list! */
+list.PushBackN([123,234,345,456,567,678]);
+
+console.log(list.Contains(456)); /* Expected Output: true */
+console.log(list.ContainsRecursive(345)); /* Expected Output: true */
+console.log(list.PopBack()); /* Expected Output: 678 */
+console.log(list.PopBack()); /* Expected Output: 567 */
+console.log(list.Contains(567)); /* Expected Output: false */
+/* Iterates our list, so we can see our node values */
+/* I'm a freebie, don't change me. */
 list.Iterate(value=>console.log(value));
-
-let averageTest = new List();
-averageTest.PushFront(10)
-averageTest.PushFront(20)
-averageTest.PushFront(30)
-console.log(averageTest.Average())
-
-/* Expected output: */
 /*
-    123
-    234
-    345
-    111
-    222
-    333
-    444
-    555
+	Expected Output:
+	123
+	234
+	345
+	456
 */
