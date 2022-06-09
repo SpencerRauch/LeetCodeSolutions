@@ -194,25 +194,38 @@ class List
     }
 };
 
-/* Create our list */
+/* Creates our list */
 let list=new List();
 
 /* ( Use your solution from day 1 for this to work! ) */
 /* Remember, it just shoves all of these into our list! */
-list.PushBackN([123,234,345,456,567,678]);
+list.PushBackN([111,222,333,444,555,666]);
 
-console.log(list.Contains(456)); /* Expected Output: true */
-console.log(list.ContainsRecursive(345)); /* Expected Output: true */
-console.log(list.PopBack()); /* Expected Output: 678 */
-console.log(list.PopBack()); /* Expected Output: 567 */
-console.log(list.Contains(567)); /* Expected Output: false */
-/* Iterates our list, so we can see our node values */
-/* I'm a freebie, don't change me. */
+console.log(list.SecondToLast()) /* Expected: 555 */
+
+list.RemoveValue(333); /* No Output */
+
+/* I'm a freebie, don't delete me! */
 list.Iterate(value=>console.log(value));
 /*
-	Expected Output:
-	123
-	234
-	345
-	456
+	Expected Output after RemoveValue(333):
+	111
+	222
+		<-- this was 333
+	444
+	555
+	666
 */
+
+list.Prepend(333,444);
+
+/* I'm a freebie, don't delete me! */
+list.Iterate(value=>console.log(value));
+/*
+	Expected Output after Prepend(333,444):
+	111
+	222
+	333 <- 333 should be back
+	444
+	555
+	*/
