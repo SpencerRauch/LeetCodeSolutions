@@ -188,7 +188,7 @@ class List
 	MinToFront()
 	{
 		let runner = this.head; //start at the head
-        if (runner == undefined) return undefined; //Empty list
+        if (runner == undefined) return; //Empty list
         let min = runner.value; //initialize min to the first value
         let minNode = runner; //initialize minNode to the first node
         while(runner.next){ //loop through the list
