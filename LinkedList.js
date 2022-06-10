@@ -152,20 +152,6 @@ class List
         return undefined;
 	}
 
-	/* Inserts a new node before a node whose value is the search_value. */
-	/* Example: */
-	/*
-		Before:
-		10
-		30
-		40
-		Prepend(20,30)
-		After:
-		10
-		20
-		30
-		40
-	*/
 	Prepend(new_value,search_value)
 	{
 		let runner = this.head;
@@ -186,7 +172,62 @@ class List
         return undefined;
 	}
 
-    
+    	/* Add all nodes of the supplied list to this list */
+	Concat(other_list)
+	{
+		let runner = this.head;
+        if (runner == undefined) return other_list;
+        while(runner.next){
+            runner = runner.next
+        }
+        runner.next = other_list.head;
+        return this;
+	}
+
+	/* Finds the node with the smallest value and moves it to the front. */
+	MinToFront()
+	{
+		let runner = this.head; //start at the head
+        if (runner == undefined) return undefined; //Empty list
+        let min = runner.value; //initialize min to the first value
+        let minNode = runner; //initialize minNode to the first node
+        while(runner.next){ //loop through the list
+            if (runner.next.value < min){ //if the next value is smaller than the current min
+                min = runner.next.value; //set the min to the next value
+                minNode = runner.next; //set the minNode to the next node
+            }
+            runner = runner.next; //move to the next node
+        }
+        if (minNode == this.head){ //already at front
+            return; //exit
+        }
+        runner = this.head; //reset runner to the head
+        while(runner.next != minNode){ //loop through the list until the minNode is next
+            runner = runner.next
+        }
+        runner.next = minNode.next; //remove the minNode from the list
+        minNode.next = this.head; //add the minNode to the front of the list
+        this.head = minNode; //set the head to the minNode
+
+	}
+
+	/* Split our list into two lists, where the second list starts with the node */
+	/* that has the given value */
+	Split(value)
+	{
+		let runner = this.head;
+        if (runner == undefined) return undefined;
+        let newList = new List();
+        while(runner.next){
+            if (runner.next.value == value){
+                newList.head = runner.next;
+                runner.next = undefined;
+                return newList;
+            }
+            runner = runner.next;
+        }
+        return undefined;
+	}
 
     Iterate(fn)
     {
@@ -196,36 +237,30 @@ class List
 
 /* Creates our list */
 let list=new List();
+let list2=new List();
 
 /* ( Use your solution from day 1 for this to work! ) */
 /* Remember, it just shoves all of these into our list! */
-list.PushBackN([111,222,333,444,555,666]);
+list.PushBackN([765,234,545,112]);
+list2.PushBackN([65,567,433,656]);
 
-console.log(list.SecondToLast()) /* Expected: 555 */
-
-list.RemoveValue(333); /* No Output */
-
-/* I'm a freebie, don't delete me! */
+list=list.Concat(list2);
 list.Iterate(value=>console.log(value));
 /*
-	Expected Output after RemoveValue(333):
-	111
-	222
-		<-- this was 333
-	444
-	555
-	666
 */
-
-list.Prepend(333,444);
-
-/* I'm a freebie, don't delete me! */
+console.log("Expected:765->234->545->112->65->567->433->656")
+list.MinToFront();
 list.Iterate(value=>console.log(value));
 /*
-	Expected Output after Prepend(333,444):
-	111
-	222
-	333 <- 333 should be back
-	444
-	555
-	*/
+*/
+console.log("Expected:65->765->234->545->112->567->433->656")
+let split_list=list.Split(545);
+list.Iterate(value=>console.log(value));
+console.log(" **************************")
+split_list.Iterate(value=>console.log(value));
+/*
+	Expected:65->765->234->
+	Expected:545->112->567->433->656
+*/
+console.log("Expected:65->765->234->")
+console.log("Expected:545->112->567->433->656")
