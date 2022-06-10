@@ -185,8 +185,7 @@ class List
 	}
 
 	/* Finds the node with the smallest value and moves it to the front. */
-	MinToFront()
-	{
+	MinToFront(){
 		let runner = this.head; //start at the head
         if (runner == undefined) return; //Empty list
         let min = runner.value; //initialize min to the first value
@@ -229,10 +228,15 @@ class List
         return undefined;
 	}
 
-    Iterate(fn)
-    {
-        for(let node=this.head;node;node=node.next){fn(node.value);}
-    }
+	Iterate()
+	{
+		let str="";
+		for(let node=this.head;node;node=node.next)
+		{
+			str+=node.value+"->";
+		}
+		console.log(str);
+	}
 };
 
 /* Creates our list */
@@ -245,19 +249,17 @@ list.PushBackN([765,234,545,112]);
 list2.PushBackN([65,567,433,656]);
 
 list=list.Concat(list2);
-list.Iterate(value=>console.log(value));
+list.Iterate();
 /*
 */
 console.log("Expected:765->234->545->112->65->567->433->656")
 list.MinToFront();
-list.Iterate(value=>console.log(value));
-/*
-*/
+list.Iterate();
+
 console.log("Expected:65->765->234->545->112->567->433->656")
 let split_list=list.Split(545);
-list.Iterate(value=>console.log(value));
-console.log(" **************************")
-split_list.Iterate(value=>console.log(value));
+list.Iterate();
+split_list.Iterate();
 /*
 	Expected:65->765->234->
 	Expected:545->112->567->433->656
