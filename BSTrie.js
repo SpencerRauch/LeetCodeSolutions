@@ -74,12 +74,12 @@ class BST {
 		let node = new BSTNode(value);
 		if (this.IsEmpty()) this.root = node; //if the tree is empty, set the root to the new node
 		let runner = this.root; //else, set the runner to the root
-		let inserted = false;
-		while (!inserted) {
+		let inserted = false; //set the inserted flag to false
+		while (!inserted) { //traverse the tree until the node is inserted
 			if (value < runner.value) { //if the value is less than the current node, check the left subtree
 				if (runner.left == undefined) { //if the left subtree is empty, insert the node
 					runner.left = node;
-					inserted = true;
+					inserted = true; //set the inserted flag to true
 				}
 				else { //else, set the runner to the left subtree
 					runner = runner.left;
@@ -88,7 +88,7 @@ class BST {
 			else { //else, check the right subtree
 				if (runner.right == undefined) { //if the right subtree is empty, insert the node
 					runner.right = node;
-					inserted = true;
+					inserted = true; //set the inserted flag to true
 				}
 				else { //else, set the runner to the right subtree
 					runner = runner.right;
@@ -103,8 +103,6 @@ class BST {
 	/* Best Time Complexity: O(1) <- Only happens if the list is empty */
 	/* Description: Inserts the given node into the tree RECURSIVELY based on its value */
 	InsertRecursive(node, value) {
-		/* Your Code Here */
-		/* CALL ME RECURSIVELY! */
 		if (this.IsEmpty()) this.root = new BSTNode(value); //if the tree is empty, set the root to the new node
 		if (value > node.value) { //if the value is greater than the current node, check the right subtree
 			if (node.right == undefined) { //if the right subtree is empty, insert the node
@@ -124,26 +122,26 @@ class BST {
 		}
 	}
 
-		/* I'm just here to print your BST In-Order. */
-		/* Could use me as an example to solve above algos, since I'm recursive and all. */
-		Log(node, fmt = "") {
-			if (!node) return fmt;
-			fmt = this.Log(node.left, fmt);
-			fmt += node.value + "->";
-			fmt = this.Log(node.right, fmt);
-			return fmt;
-		}
+	/* I'm just here to print your BST In-Order. */
+	/* Could use me as an example to solve above algos, since I'm recursive and all. */
+	Log(node, fmt = "") {
+		if (!node) return fmt;
+		fmt = this.Log(node.left, fmt);
+		fmt += node.value + "->";
+		fmt = this.Log(node.right, fmt);
+		return fmt;
+	}
 
-		/* I'm just here to print your BST In-Order. */
-		/* Could use me as an example to solve above algos, since I'm recursive and all. */
-		Log(node, fmt = "") {
-			if (!node) return fmt;
-			fmt = this.Log(node.left, fmt);
-			fmt += node.value + "->";
-			fmt = this.Log(node.right, fmt);
-			return fmt;
-		}
-	};
+	/* I'm just here to print your BST In-Order. */
+	/* Could use me as an example to solve above algos, since I'm recursive and all. */
+	Log(node, fmt = "") {
+		if (!node) return fmt;
+		fmt = this.Log(node.left, fmt);
+		fmt += node.value + "->";
+		fmt = this.Log(node.right, fmt);
+		return fmt;
+	}
+};
 /*****************************************************************************/
 /* Code Tests Below */
 /*****************************************************************************/
