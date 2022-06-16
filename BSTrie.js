@@ -72,7 +72,11 @@ class BST {
 	}
 	Insert(value) {
 		let node = new BSTNode(value);
-		if (this.IsEmpty()) this.root = node; //if the tree is empty, set the root to the new node
+		if (this.IsEmpty()){
+			this.root = node; //if the tree is empty, set the root to the new node
+			return this;
+		}
+			
 		let runner = this.root; //else, set the runner to the root
 		let inserted = false; //set the inserted flag to false
 		while (!inserted) { //traverse the tree until the node is inserted
@@ -95,6 +99,7 @@ class BST {
 				}
 			}
 		}
+		return this;
 
 	}
 
@@ -121,6 +126,46 @@ class BST {
 			}
 		}
 	}
+	PreOrder(node)
+	{
+		if(!node) return;
+		console.log(node.value);
+		this.PreOrder(node.left);
+		this.PreOrder(node.right);
+		/* Call me recursively */
+		/* Call me recursively */
+	}
+
+	/* Ordering: Left, Node, Right */	
+	/* Time Complexity: O(N) */
+	/* Description: Traverse / Iterate the tree In-Order. */
+	/* console.log(node.value) each node's value */
+	/* When To Use: When you need to explore the tree INORDER */
+	InOrder(node)
+	{
+		if(!node) return;
+		this.InOrder(node.left);
+		console.log(node.value);
+		this.InOrder(node.right);
+		/* Call me recursively */
+		/* Call me recursively */
+	}
+
+	/* Left, Right, Node */
+	/* Time Complexity: O(N) */
+	/* Description: Traverse / Iterate the tree Post-Order. */
+	/* console.log(node.value) each node's value */
+	/* When To Use: When you need to explore LEAVES before ROOTS */
+	PostOrder(node)
+	{
+		if(!node) return;
+		this.PostOrder(node.left);
+		this.PostOrder(node.right);
+		console.log(node.value);
+		/* Call me recursively */
+		/* Call me recursively */
+	}
+
 
 	/* I'm just here to print your BST In-Order. */
 	/* Could use me as an example to solve above algos, since I'm recursive and all. */
@@ -132,33 +177,49 @@ class BST {
 		return fmt;
 	}
 
-	/* I'm just here to print your BST In-Order. */
-	/* Could use me as an example to solve above algos, since I'm recursive and all. */
-	Log(node, fmt = "") {
-		if (!node) return fmt;
-		fmt = this.Log(node.left, fmt);
-		fmt += node.value + "->";
-		fmt = this.Log(node.right, fmt);
-		return fmt;
-	}
+
+
 };
 /*****************************************************************************/
 /* Code Tests Below */
 /*****************************************************************************/
-let bst = new BST();
+// let bst = new BST();
 
-bst.root = new BSTNode(100);
-bst.root.left = new BSTNode(50);
-bst.root.right = new BSTNode(150);
+// bst.root = new BSTNode(100);
+// bst.root.left = new BSTNode(50);
+// bst.root.right = new BSTNode(150);
 
-bst.root.left.left = new BSTNode(25);
-bst.root.left.right = new BSTNode(75);
+// bst.root.left.left = new BSTNode(25);
+// bst.root.left.right = new BSTNode(75);
 
-bst.root.right.left = new BSTNode(125);
-bst.root.right.right = new BSTNode(175);
+// bst.root.right.left = new BSTNode(125);
+// bst.root.right.right = new BSTNode(175);
 
 
-bst.Insert(44);
-console.log(bst.Log(bst.root)); 	/* Expected: 25->44->50->75->100->125->150->175-> */
-bst.InsertRecursive(bst.root, 22);
-console.log(bst.Log(bst.root));		/* Expected: 22->25->44->50->75->100->125->150->175-> */
+// bst.Insert(44);
+// console.log(bst.Log(bst.root)); 	/* Expected: 25->44->50->75->100->125->150->175-> */
+// bst.InsertRecursive(bst.root, 22);
+// console.log(bst.Log(bst.root));		/* Expected: 22->25->44->50->75->100->125->150->175-> */
+
+const fullTree = new BST();
+fullTree.Insert(25)
+.Insert(15)
+.Insert(10)
+.Insert(22)
+.Insert(4)
+.Insert(12)
+.Insert(18)
+.Insert(24)
+.Insert(50)
+.Insert(35)
+.Insert(70)
+.Insert(31)
+.Insert(44)
+.Insert(66)
+.Insert(90);
+
+  fullTree.PreOrder(fullTree.root);
+  console.log("************************************************************************");
+  fullTree.InOrder(fullTree.root);
+  console.log("************************************************************************");
+  fullTree.PostOrder(fullTree.root);
