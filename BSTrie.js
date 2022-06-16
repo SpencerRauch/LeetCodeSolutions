@@ -201,25 +201,15 @@ class BST {
 // bst.InsertRecursive(bst.root, 22);
 // console.log(bst.Log(bst.root));		/* Expected: 22->25->44->50->75->100->125->150->175-> */
 
-const fullTree = new BST();
-fullTree.Insert(25)
-.Insert(15)
-.Insert(10)
-.Insert(22)
-.Insert(4)
-.Insert(12)
-.Insert(18)
-.Insert(24)
-.Insert(50)
-.Insert(35)
-.Insert(70)
-.Insert(31)
-.Insert(44)
-.Insert(66)
-.Insert(90);
+let bst=new BST();
+bst.root=new BSTNode(100);
+bst.root.left=new BSTNode(50);
+bst.root.left.left=new BSTNode(25);
+bst.root.left.right=new BSTNode(75);
+bst.root.right=new BSTNode(150);
+bst.root.right.left=new BSTNode(125);
+bst.root.right.right=new BSTNode(175);
 
-  fullTree.PreOrder(fullTree.root);
-  console.log("************************************************************************");
-  fullTree.InOrder(fullTree.root);
-  console.log("************************************************************************");
-  fullTree.PostOrder(fullTree.root);
+console.log(bst.PreOrder(bst.root)); 	/* Expected: 100 50 25 75 150 125 175 */
+console.log(bst.InOrder(bst.root)); 	/* Expected: 25 50 75 100 125 150 175 */
+console.log(bst.PostOrder(bst.root));   /* Expected: 25 75 50 125 175 150 100 */
