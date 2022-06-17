@@ -169,17 +169,14 @@ class BST {
 	/* Description: Count and return the total number of nodes in the tree */
 	Size(node)
 	{
-		if(!node) return 0;
-		return 1 + this.Size(node.left) + this.Size(node.right);
-		/* Call me recursively */
+		return node ? 1 + this.Size(node.left) + this.Size(node.right) : 0;
 	}
 
 	/* Time Complexity: O(N) */
 	/* Description: Count and return the furthest path from root to leaf node */
 	Height(node)
 	{
-		if(!node) return 0;
-		return 1 + Math.max(this.Height(node.left), this.Height(node.right));
+		return node ? 1 + Math.max(this.Height(node.left), this.Height(node.right)) : 0;
 	}
 
 
