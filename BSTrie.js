@@ -165,6 +165,22 @@ class BST {
 		/* Call me recursively */
 		/* Call me recursively */
 	}
+		/* Time Complexity: O(N) */
+	/* Description: Count and return the total number of nodes in the tree */
+	Size(node)
+	{
+		if(!node) return 0;
+		return 1 + this.Size(node.left) + this.Size(node.right);
+		/* Call me recursively */
+	}
+
+	/* Time Complexity: O(N) */
+	/* Description: Count and return the furthest path from root to leaf node */
+	Height(node)
+	{
+		if(!node) return 0;
+		return 1 + Math.max(this.Height(node.left), this.Height(node.right));
+	}
 
 
 	/* I'm just here to print your BST In-Order. */
@@ -200,7 +216,6 @@ class BST {
 // console.log(bst.Log(bst.root)); 	/* Expected: 25->44->50->75->100->125->150->175-> */
 // bst.InsertRecursive(bst.root, 22);
 // console.log(bst.Log(bst.root));		/* Expected: 22->25->44->50->75->100->125->150->175-> */
-
 let bst=new BST();
 bst.root=new BSTNode(100);
 bst.root.left=new BSTNode(50);
@@ -210,6 +225,5 @@ bst.root.right=new BSTNode(150);
 bst.root.right.left=new BSTNode(125);
 bst.root.right.right=new BSTNode(175);
 
-console.log(bst.PreOrder(bst.root)); 	/* Expected: 100 50 25 75 150 125 175 */
-console.log(bst.InOrder(bst.root)); 	/* Expected: 25 50 75 100 125 150 175 */
-console.log(bst.PostOrder(bst.root));   /* Expected: 25 75 50 125 175 150 100 */
+console.log(bst.Size(bst.root)); 	/* Expected: 7 */
+console.log(bst.Height(bst.root)); 	/* Expected: 3 */
