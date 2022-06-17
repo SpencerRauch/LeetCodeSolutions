@@ -169,6 +169,8 @@ class BST {
 	/* Description: Count and return the total number of nodes in the tree */
 	Size(node)
 	{
+		//if node exists, return 1 + the size of the left subtree + the size of the right subtree
+		//else return 0
 		return node ? 1 + this.Size(node.left) + this.Size(node.right) : 0;
 	}
 
@@ -176,6 +178,8 @@ class BST {
 	/* Description: Count and return the furthest path from root to leaf node */
 	Height(node)
 	{
+		//if node exists, return 1 + the max of the left subtree's height and the right subtree's height
+		//else return 0
 		return node ? 1 + Math.max(this.Height(node.left), this.Height(node.right)) : 0;
 	}
 
