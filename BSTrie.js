@@ -165,7 +165,7 @@ class BST {
 		/* Call me recursively */
 		/* Call me recursively */
 	}
-		/* Time Complexity: O(N) */
+	/* Time Complexity: O(N) */
 	/* Description: Count and return the total number of nodes in the tree */
 	Size(node)
 	{
