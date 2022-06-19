@@ -21,14 +21,15 @@ function persistence(num) {
 }
 
 function persistence2(num, count=0){
+    if (num < 10) return count;
     let string = num.toString();
     let newNum = 1;
     for (let char of string){
         if (char == "0") return count + 1;
         newNum *= parseInt(char);
     }
-    return newNum < 10 ? count + 1 : persistence2(newNum, count + 1);
+    return persistence2(newNum, count + 1);
 }
 
 console.log(persistence(90001))
-console.log(persistence2(9011))
+console.log(persistence2(9999))
