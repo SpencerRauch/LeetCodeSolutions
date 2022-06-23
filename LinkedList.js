@@ -237,32 +237,36 @@ class List
 		}
 		console.log(str);
 	}
+
+    	/* Time:O(n) */
+	/* Space:O(1) */
+	/* Description: Iteratively reverses the linked list in-place. Don't make a new list. */
+	/*
+		Instructions (These go IN your loop):
+		1. Store .next (The one AFTER your runner), because if you lose it, you can't go back.
+		2. Set current's next to previous.
+		3. Set previous to current
+		4. Set current to step one's value. (The old next)
+		5. Set head to previous (I go outside the loop when you're done).
+	*/
+	Reverse()
+    {
+        if (this.IsEmpty()) return;
+        let previous = undefined;
+        let current = this.head;
+        while(current){
+            let next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        this.head = previous;
+    }
 };
 
-/* Creates our list */
+
+let items=[10,20,30,40,50];
 let list=new List();
-let list2=new List();
-
-/* ( Use your solution from day 1 for this to work! ) */
-/* Remember, it just shoves all of these into our list! */
-list.PushBackN([765,234,545,112]);
-list2.PushBackN([65,567,433,656]);
-
-list=list.Concat(list2);
+list.PushBackN(items); /* Remember Me? Bring me back for this to work! */
+list.Reverse();
 list.Iterate();
-/*
-*/
-console.log("Expected:765->234->545->112->65->567->433->656")
-list.MinToFront();
-list.Iterate();
-
-console.log("Expected:65->765->234->545->112->567->433->656")
-let split_list=list.Split(545);
-list.Iterate();
-split_list.Iterate();
-/*
-	Expected:65->765->234->
-	Expected:545->112->567->433->656
-*/
-console.log("Expected:65->765->234->")
-console.log("Expected:545->112->567->433->656")
