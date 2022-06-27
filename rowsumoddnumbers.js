@@ -13,5 +13,6 @@ function rowSumOddNumbers(n) {
         sum += first_num
     }
     return sum
-
 }
+
+function rowSumOddNumbers2(n) {return n*n*n};
