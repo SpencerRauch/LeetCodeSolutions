@@ -251,16 +251,17 @@ class List
 	*/
 	Reverse()
     {
-        if (this.IsEmpty()) return;
-        let previous = undefined;
-        let current = this.head;
-        while(current){
-            let next = current.next;
-            current.next = previous;
-            previous = current;
-            current = next;
+        if (this.IsEmpty()) return; //empty list
+        if (this.head.next == undefined) return; //only one node
+        let previous = undefined; //initialize previous to undefined
+        let current = this.head; //initialize current to the head
+        while(current){ //loop through the list
+            let next = current.next; //store the next node
+            current.next = previous; //set the current node's next to the previous node
+            previous = current; //set the previous node to the current node
+            current = next; //set the current node to the next node
         }
-        this.head = previous;
+        this.head = previous; //set the head to the previous node
     }
 };
 
