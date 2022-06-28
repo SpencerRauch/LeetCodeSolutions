@@ -25,18 +25,17 @@ class Queue
 	Enqueue(value)
 	{
 		/* Your Code Here */
-        let node = new Node(value);
-        if (this.head == undefined){
-            this.head = node;
-            this.tail = node;
-            this.length = 1;
-            return;
-        }
-        this.tail.next = node;
-        node.previous = this.tail;
-        this.tail = node;
-        this.length++;
-        
+		let node = new Node(value);
+		if (this.IsEmpty()){
+			this.head = node;
+			this.tail = node;
+			this.length = 1;
+			return;
+		}
+		this.tail.next = node;
+		node.previous = this.tail;
+		this.tail = node;
+		this.length++;
 	}
 
 	/* Time:O(1) */
@@ -44,12 +43,16 @@ class Queue
 	/* Removes and returns the value at the front of the queue. */
 	Dequeue()
 	{
+		/* Your Code Here */
+		if (this.IsEmpty()) return;
 		let oldHead = this.head;
-        this.head = oldHead.next;
-        this.head.previous = undefined;
-        this.length--;
-        return oldHead.value;
-
+		this.head = oldHead.next;
+		if (this.head){
+			this.head.previous = undefined;
+		}
+		oldHead.next = undefined;
+		this.length--;
+		return oldHead.value;
 
 	}
 
@@ -58,7 +61,9 @@ class Queue
 	/* Returns but does NOT remove the value at the front of the queue. */
 	Front()
 	{
+		/* Your Code Here */
 		return this.head.value;
+		
 	}
 
 	/* Time:O(1) */
@@ -66,6 +71,7 @@ class Queue
 	/* Returns but does NOT remove the value at the back of the queue. */
 	Back()
 	{
+		/* Your Code Here */
 		return this.tail.value;
 	}
 
@@ -74,6 +80,7 @@ class Queue
 	/* Returns whether the queue is empty. */
 	IsEmpty()
 	{
+		/* Your Code Here */
 		return this.head == undefined;
 	}
 
@@ -82,6 +89,7 @@ class Queue
 	/* Returns the number of nodes or items in the queue. */
 	Size()
 	{
+		/* Your Code Here */
 		return this.length;
 	}
 
