@@ -65,6 +65,54 @@ class Queue
 		return this.head.value;
 		
 	}
+		/******************************************************************************
+	* Name: Queue.Compare(otherQueue)
+	* Description: Determines whether two queues have the exact same values
+	* Arguments:
+		* 1: Queue otherQueue
+	* Returns: Boolean
+	* Time: O(n)
+	* Space: O(1)
+	******************************************************************************/
+	Compare(otherQueue){
+
+		if (this.length != otherQueue.length) return false;
+		let thisRunner = this.head;
+		let otherRunner = otherQueue.head;
+		while(thisRunner){
+			if (thisRunner.value != otherRunner.value) return false;
+			thisRunner = thisRunner.next;
+			otherRunner = otherRunner.next;
+		}
+		return true;
+
+	}
+	/******************************************************************************
+	* Name: Queue.IsPalindrome()
+	* Description: Determines whether the queue is a palindrome
+	* Arguments:
+		* None
+	* Returns: Boolean
+	* Time: O(n)
+	* Space: O(1)
+	* Examples:
+		* 1 2 3 2 1 <- true
+		* 5 3 1 8 4 <- false
+		* r a c e c a r <- true
+		* h a r r y p o t t e r <- false
+	******************************************************************************/	
+	IsPalindrome(){
+		if (this.head == undefined || this.head == this.tail) return true;
+		let frontRunner = this.head;
+		let backRunner = this.tail;
+		while(frontRunner != backRunner && frontRunner.next != backRunner){
+			if (frontRunner.value != backRunner.value) return false;
+			frontRunner = frontRunner.next;
+			backRunner = backRunner.previous;
+		}
+		return true;
+
+	}
 
 	/* Time:O(1) */
 	/* Space:O(1) */
@@ -104,16 +152,18 @@ class Queue
 	}
 };
 
+let items=[10,20,30,20,10];
+let items2=[60,70,80,90,100];
 let q=new Queue();
-q.Enqueue(16);
-q.Enqueue(32);
-q.Enqueue(64);
-q.Enqueue(128);
-q.Enqueue(256);
-q.Log(); 					/* Expected: 16->32->64->128->256-> */
-console.log(q.Dequeue()); 	/* Expected: 16 */
-console.log(q.Dequeue()); 	/* Expected: 32 */
-console.log(q.Front()); 	/* Expected: 64 */
-console.log(q.Back()); 		/* Expected: 256 */
-console.log(q.IsEmpty()) 	/* Expected: false */
-console.log(q.Size());		/* Expected: 3 */
+let q2=new Queue();
+let q3=new Queue();
+for(let i=0;i<items.length;i++)
+{
+	q.Enqueue(items[i]);
+	q2.Enqueue(items[i]);
+	q3.Enqueue(items2[i]);
+}
+console.log(q.Compare(q2));  	/* Expected: true */
+console.log(q2.Compare(q3)); 	/* Expected: false */
+console.log(q.IsPalindrome()); 	/* Expected: true */
+console.log(q3.IsPalindrome()); /* Expected: false */
