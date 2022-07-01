@@ -34,7 +34,7 @@ class PQueue
             this.head = node;
             return;
         }
-        //moving a runner proper priority position
+        //moving a runner to proper priority position
         let runner = this.head
         while(runner.next && runner.next.priority < node.priority){ //checks if there's a next, then if that next should come before our new node
             runner = runner.next; // if so, move forward
