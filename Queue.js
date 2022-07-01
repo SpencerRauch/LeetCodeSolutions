@@ -105,7 +105,7 @@ class Queue
 		if (this.head == undefined || this.head == this.tail) return true;
 		let frontRunner = this.head;
 		let backRunner = this.tail;
-		while(frontRunner != backRunner && frontRunner.next != backRunner){
+		while(frontRunner != backRunner && frontRunner.previous != backRunner){
 			if (frontRunner.value != backRunner.value) return false;
 			frontRunner = frontRunner.next;
 			backRunner = backRunner.previous;
@@ -141,6 +141,22 @@ class Queue
 		return this.length;
 	}
 
+	SumHalves(){
+
+		if (this.head == undefined || this.head == this.tail) return;
+		let frontRunner = this.head;
+		let backRunner = this.tail;
+		let firstHalf = 0;
+		let secondHalf = 0;
+		while(frontRunner != backRunner && frontRunner.previous != backRunner){
+			firstHalf += frontRunner.value;
+			secondHalf += backRunner.value;
+			frontRunner = frontRunner.next;
+			backRunner = backRunner.previous;
+		}
+		return firstHalf == secondHalf;
+	}
+
 	Log()
 	{
 		let str="";
@@ -152,7 +168,7 @@ class Queue
 	}
 };
 
-let items=[10,20,30,20,10];
+let items=[10,20,30,20,30,20,10];
 let items2=[60,70,80,90,100];
 let q=new Queue();
 let q2=new Queue();
@@ -163,7 +179,4 @@ for(let i=0;i<items.length;i++)
 	q2.Enqueue(items[i]);
 	q3.Enqueue(items2[i]);
 }
-console.log(q.Compare(q2));  	/* Expected: true */
-console.log(q2.Compare(q3)); 	/* Expected: false */
-console.log(q.IsPalindrome()); 	/* Expected: true */
-console.log(q3.IsPalindrome()); /* Expected: false */
+console.log(q.SumHalves());  	/* Expected: true */
