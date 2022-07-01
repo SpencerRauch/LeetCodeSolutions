@@ -36,7 +36,7 @@ class PQueue
         }
         //moving a runner to proper priority position
         let runner = this.head
-        while(runner.next && runner.next.priority < node.priority){ //checks if there's a next, then if that next should come before our new node
+        while(runner.next && runner.next.priority <= node.priority){ //checks if there's a next, then if that next should come before our new node
             runner = runner.next; // if so, move forward
         }
 
@@ -86,7 +86,7 @@ let pqueue=new PQueue();
 pqueue.Enqueue(4,"bob");
 pqueue.Enqueue(2,"ellen");
 pqueue.Enqueue(1,"mary");
-pqueue.Enqueue(3,"jim");
+pqueue.Enqueue(1,"jim");
 pqueue.Log()
 pqueue.LogBack()
 console.log(pqueue.Dequeue()+pqueue.Dequeue()); /* Expected: maryellen */
