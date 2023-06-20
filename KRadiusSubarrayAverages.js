@@ -10,7 +10,7 @@ var getAverages = function(nums, k) {
     if (nums.length < rangeSize) return averages
     let i = k;
     let total = 0;
-    for (let j = 0; j < k *2 +1; j++){
+    for (let j = 0; j < rangeSize; j++){
         total += nums[j]
     }
     console.log(total)
