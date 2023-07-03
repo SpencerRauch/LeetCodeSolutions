@@ -11,6 +11,7 @@
  * @param {TreeNode} root2
  * @return {number[]}
  */
+
  var getAllElements = function(root1, root2) {
     let array = []
     const traverseAndPush = function(root, array) {
