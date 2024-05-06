@@ -10,6 +10,8 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+
+//first attempt
 var removeNodes = function(head) {
     let runner = head;
     let arr = []
@@ -38,7 +40,7 @@ var removeNodes = function(head) {
     }
     return head
 };
-
+//build in place, one less loop
 var removeNodes2 = function(head) {
     let runner = head;
     let arr = []
