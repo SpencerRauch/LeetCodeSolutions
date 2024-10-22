@@ -56,3 +56,25 @@ var kthLargestLevelSum = function(root, k) {
     sumsByLevel.sort((a,b)=>(b-a))
     return sumsByLevel[k-1]
 };
+
+
+// this solution uses the queue but processes the amount in the queue at a time, giving level totals
+// more memory efficient, a bit slower
+
+var kthLargestLevelSum = function(root, k) {
+    let sum = [];
+    const queue = [root];
+    while(queue.length > 0){
+        const len = queue.length;
+        let levelSum = 0;
+        for(let i=0;i<len;i++){
+            const node = queue.shift();
+            levelSum += node.val;
+            if(node.left) queue.push(node.left);
+            if(node.right) queue.push(node.right);
+        }
+        sum.push(levelSum);
+    }
+    sum = sum.sort((a,b)=>b-a);
+    return sum[k-1] ?? -1;
+};
