@@ -7,11 +7,15 @@
  *     this.right = (right===undefined ? null : right)
  * }
  */
+
+
 /**
  * @param {TreeNode} root
  * @param {number} k
  * @return {number}
  */
+
+//intuition, generate level order, sum like levels, find max
 var kthLargestLevelSum = function(root, k) {
 
     const queue = [[root,1]];
@@ -30,5 +34,27 @@ var kthLargestLevelSum = function(root, k) {
     console.log(sortedVals)
 
     return sortedVals[k-1] ? sortedVals[k-1] : -1;
+
+};
+
+// intuition: with levels being passed, order isn't important, easier to traverse without a queue
+// array more effiecient for storage
+// don't bother to sort if k is bigger than length
+var kthLargestLevelSum = function(root, k) {
+    const sumsByLevel = [];
+    function explore(node=root, level=0){
+        if (!node) return 
+        if (!sumsByLevel[level]){
+            sumsByLevel[level] = node.val
+        } else {
+            sumsByLevel[level] += node.val
+        }
+        explore(node.left, level + 1)
+        explore(node.right, level + 1)
+    }
+    explore()
+    if (!sumsByLevel[k-1]) return -1
+    sumsByLevel.sort((a,b)=>(b-a))
+    return sumsByLevel[k-1]
 
 };
