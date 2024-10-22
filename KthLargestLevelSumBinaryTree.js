@@ -43,18 +43,16 @@ var kthLargestLevelSum = function(root, k) {
 var kthLargestLevelSum = function(root, k) {
     const sumsByLevel = [];
     function explore(node=root, level=0){
-        if (!node) return 
         if (!sumsByLevel[level]){
             sumsByLevel[level] = node.val
         } else {
             sumsByLevel[level] += node.val
         }
-        explore(node.left, level + 1)
-        explore(node.right, level + 1)
+        if (node.left) explore(node.left, level + 1)
+        if (node.right) explore(node.right, level + 1)
     }
     explore()
     if (!sumsByLevel[k-1]) return -1
     sumsByLevel.sort((a,b)=>(b-a))
     return sumsByLevel[k-1]
-
 };
