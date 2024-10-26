@@ -26,3 +26,32 @@ var compress = function(chars) {
     }
     return building.length
 };
+
+/**
+ * @param {character[]} chars
+ * @return {number}
+ */
+var compress = function(chars) {
+    let last = chars[0];
+    let count = 1;
+    let writePoint = 0;
+    for ( let i = 1; i < chars.length+1; i++){
+        let current = chars[i];
+        if (last != current){
+            chars[writePoint] = last;
+            writePoint++;
+            if (count > 1){
+                let countStr = count.toString();
+                for (let char of countStr){
+                    chars[writePoint] = char;
+                    writePoint++;
+                }
+            } 
+            last = current;
+            count = 1;
+        } else {
+            count++
+        }
+    }
+    return writePoint
+};
