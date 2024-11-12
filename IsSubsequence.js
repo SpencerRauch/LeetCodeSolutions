@@ -19,3 +19,23 @@
     
 };
 //https://leetcode.com/problems/is-subsequence
+
+//re-written in 2024 (didn't realize I had done it)
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isSubsequence = function(s, t) {
+    let subI = 0;
+    let searchI = 0;
+    while ( searchI < t.length){
+        if(t[searchI] == s[subI]){
+            subI++
+            if (subI == s.length) return true
+        }
+        searchI++
+    }
+    return subI == s.length
+};
