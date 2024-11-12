@@ -35,3 +35,34 @@ var oddEvenList = function(head) {
     
     return head;
 };
+
+
+//Revisited blind 11/2024, code got a lot better in three years!
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var oddEvenList = function(head) {
+    if (!head) return null
+    if (!head.next || !head.next.next) return head
+    let a = head
+    let b = head.next
+    let listB = b
+    while(b && b.next){
+        a.next = b.next
+        a = a.next
+        b.next = a.next
+        b = b.next
+    }
+    a.next = listB
+    
+    return head
+};
