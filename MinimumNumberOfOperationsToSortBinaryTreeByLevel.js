@@ -75,3 +75,20 @@ var minimumOperations = function(root) {
     return count
 
 };
+
+const party = ["bob","alice"];
+console.log("for 2000000 iterations");
+
+console.time("deconstruct")
+for(let i=2000000; i>=0; --i){
+    const [bob,alice] = party;
+}
+console.timeEnd("deconstruct")
+
+console.time("classical")
+for(let i=2000000; i>=0; --i) {
+    const bob = party[0];
+    const alice = party[1];
+}
+console.timeEnd("classical")
+
