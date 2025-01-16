@@ -38,3 +38,36 @@
     }
     return int;
 };
+
+
+//reviist 2025:
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var myAtoi = function(s) {
+    const min = -Math.pow(2,31);
+    const max = Math.pow(2,31)-1;
+    let numString = "";
+    let negative = false;
+    let i = 0;
+    s = s.trimStart();
+    if (s[i] == "-"){
+        negative = true;
+        i++
+    } else if (s[i] == "+"){
+        i++
+    }
+    while(!isNaN(parseInt(s[i]))){
+        numString += s[i]
+        i++
+    }
+    if (numString.length == 0) return 0
+    if (negative) numString = "-" + numString
+    let num = parseInt(numString);
+    if (num < min) num = min;
+    if (num > max) num = max;
+    return num
+    
+};
