@@ -27,3 +27,19 @@ var triangularSum = function(nums) {
     }
     return nums[0]
 };
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var triangularSum = function(nums) {
+    const working = [...nums]
+    let end = working.length-1;
+    while(0 < end){
+        for (let i = 0; i < end; i++){
+            working[i] = (working[i] + working[i+1])%10
+        }
+        end--
+    }
+    return working[0]
+};
