@@ -44,3 +44,21 @@ function twoSums(arr, target) {
 console.log(twoSums([2, 11, 7, 15], 9)); // [0,2]
 console.log(twoSums([3, 2, 4], 6)); // [1,2]
 console.log(twoSums([3, 3], 6)); // [0,1]
+
+//2025 redo, now we're using maps these days, ya know?
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    const numMap = new Map();
+    for (let i = 0; i < nums.length; i++){
+        let val = nums[i]
+        let diff = target - nums[i]
+        if (numMap.has(diff)){
+            return [i, numMap.get(diff)]
+        }
+        numMap.set(nums[i],i)
+    }
+};
