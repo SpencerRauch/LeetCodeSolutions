@@ -18,7 +18,7 @@ var countDays = function(days, meetings) {
     return count
 };
 
-// fails test cases, too much memory usage
+// fails test cases, too much memory usage for large schedules in constraints
 
 
 /**
