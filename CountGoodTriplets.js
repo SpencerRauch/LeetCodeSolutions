@@ -21,3 +21,5 @@ var countGoodTriplets = function(arr, a, b, c) {
     }
     return count
 };
+
+//https://leetcode.com/problems/count-good-triplets
