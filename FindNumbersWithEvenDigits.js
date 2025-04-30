@@ -2,7 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
-var findNumbers = function(nums) {
+var findNumbers = function(nums) { //narrow constraints made me go this way
     const isEven = (num) => {
         if (num < 10){
             return false
@@ -24,6 +24,16 @@ var findNumbers = function(nums) {
     let count = 0;
     for (let i = 0; i < nums.length; i++){
         if (isEven(nums[i])) count++
+    }
+    return count
+};
+
+var findNumbers = function(nums) { //works for any constraints
+    let count = 0;
+    for (let i = 0; i < nums.length; i++){
+        if (("" + nums[i]).length % 2 == 0){
+            count++
+        }
     }
     return count
 };
